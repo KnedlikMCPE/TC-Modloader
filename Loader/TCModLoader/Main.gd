@@ -13,6 +13,10 @@ func _ready():
 		mods.append(file)
 	
 	for mod in mods:
+		#var modConf = load("res://" + mod.split(".")[0] + "/conf.json")
+		# I envision configs containing basic information about the mod, like:
+		#	mod version
+		#	mod dependencies
 		var modMain = load("res://" + mod.split(".")[0] + "/Main.gd")
 		var modNode = Node.new()
 		modNode.set_script(modMain)

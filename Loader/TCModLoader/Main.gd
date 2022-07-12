@@ -3,11 +3,11 @@ extends Node
 func _ready():
 	print("Starting modloader")
 	
-	var files = listDir("user://")
+	var files = listDir("user://mods/")
 	
 	for file in files:
 		print("Loading resource pack: " + file)
-		ProjectSettings.load_resource_pack("user://" + file)
+		ProjectSettings.load_resource_pack("user://mods/" + file)
 		var modMain = load("res://" + file.split(".")[0] + "/Main.gd")
 		var modNode = Node.new()
 		modNode.set_script(modMain)

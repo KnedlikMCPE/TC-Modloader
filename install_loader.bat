@@ -6,4 +6,5 @@ godotpcktool "Turing Complete.pck" -a a extracted --remove-prefix extracted
 rmdir /S /Q extracted
 xcopy "Turing Complete.pck" "../" /y
 del "Turing Complete.pck"
+xcopy "TCModLoader.pck" "../" /y
 pause

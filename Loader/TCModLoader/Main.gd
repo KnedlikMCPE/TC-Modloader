@@ -6,7 +6,7 @@ func _ready():
 	var files = listDir("user://")
 	
 	for file in files:
-		print("loading resource pack: " + file)
+		print("Loading resource pack: " + file)
 		ProjectSettings.load_resource_pack("user://" + file)
 		var modMain = load("res://" + file.split(".")[0] + "/Main.gd")
 		var modNode = Node.new()
@@ -23,10 +23,8 @@ func listDir(tgtDir: String):
 	while true:
 		var file = dir.get_next()
 		if file == "":
-			print("Breaking")
 			break
 		if file.ends_with(".pck"):
-			print("appending file")
 			files.append(file)
 			
 	dir.list_dir_end()

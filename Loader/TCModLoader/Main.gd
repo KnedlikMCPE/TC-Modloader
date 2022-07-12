@@ -4,15 +4,16 @@ func _ready():
 	print("Starting modloader")
 	
 	var files = listDir("user://mods/")
+	var mods = [];
 
 	for file in files:
 		if not ProjectSettings.load_resource_pack("user://mods/" + file):
 			print("Failed loading resource pack: " + file)
-			files.remove(files.find(file))
 		print("Loaded resource pack: " + file)
+		mods.append(file)
 	
-	for file in files:
-		var modMain = load("res://" + file.split(".")[0] + "/Main.gd")
+	for mod in mods:
+		var modMain = load("res://" + mod.split(".")[0] + "/Main.gd")
 		var modNode = Node.new()
 		modNode.set_script(modMain)
 		get_tree().get_root().call_deferred("add_child", modNode)

@@ -301,6 +301,17 @@ func _ready():
 				get_node("/root/level/map/delay")
 		)
 		
+		var modloader_success = ProjectSettings.load_resource_pack("res://TCModLoader.pck")
+		
+		if modloader_success:
+			var loaderMain = load("res://TCModLoader/Main.gdc")
+			var loaderNode = Node.new()
+			loaderNode.set_script(loaderMain)
+			get_tree().get_root().call_deferred("add_child", loaderNode)
+			print("TCModloader loaded!")
+		else:
+			push_warning("TCModloader failed to load")
+		
 func full_screen_delay():
 		OS.window_fullscreen = true
 		get_node("/root/level/main").resize()

@@ -3,7 +3,7 @@ extends Node
 func _ready():
 	print("Starting modloader")
 	
-	var files = listDir("user://mods/")
+	var files = listDir(OS.get_user_data_dir() + "/mods/")
 	var mods = [];
 
 	for file in files:
